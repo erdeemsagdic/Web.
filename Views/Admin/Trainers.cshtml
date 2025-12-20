@@ -1,13 +1,18 @@
-﻿@model IEnumerable<SPORSALONUYONETIM.Models.Trainer>
+﻿@model List<SPORSALONUYONETIM.Models.Trainer>
+
+@{
+    ViewData["Title"] = "Antrenörler";
+}
 
 <h2>Antrenörler</h2>
 
-<table class="table table-bordered table-striped">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>Ad Soyad</th>
-            <th>Spor</th>
-            <th>Çalışma Saatleri</th>
+            <th>Spor Türü</th>
+            <th>Çalışma Başlangıç</th>
+            <th>Çalışma Bitiş</th>
         </tr>
     </thead>
     <tbody>
@@ -16,7 +21,8 @@
             <tr>
                 <td>@t.FullName</td>
                 <td>@t.SportType</td>
-                <td>@t.WorkStart - @t.WorkEnd</td>
+                <td>@t.WorkStart</td>
+                <td>@t.WorkEnd</td>
             </tr>
         }
     </tbody>

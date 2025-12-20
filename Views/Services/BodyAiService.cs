@@ -4,12 +4,12 @@
     {
         public BodyAiResult Analyze(int heightCm, int weightKg)
         {
-            // 1️⃣ BMI hesapla
+            //BMI hesapla
             double heightMeter = heightCm / 100.0;
             double bmi = weightKg / (heightMeter * heightMeter);
             bmi = Math.Round(bmi, 2);
 
-            // 2️⃣ BMI aralığı ve durumu
+            // BMI aralığı ve durumu
             string bmiRange;
             string bmiStatus;
             string recommendedSport;
@@ -39,7 +39,7 @@
                 recommendedSport = "Kardiyo + Yoga";
             }
 
-            // 3️⃣ Sonucu dön
+            // Sonucu dön
             return new BodyAiResult
             {
                 Bmi = bmi,
@@ -50,7 +50,7 @@
         }
     }
 
-    // AI çıktısı (Result Model)
+    // AI çıktısı 
     public class BodyAiResult
     {
         public double Bmi { get; set; }

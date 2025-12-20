@@ -51,7 +51,7 @@
     <script>
         const startInput = document.getElementById("startTime");
 
-        // 🔒 Geçmiş tarih engeli
+        // Geçmiş tarih engeli
         function setMinDateTime() {
             const now = new Date();
             now.setSeconds(0);
@@ -64,12 +64,12 @@
 
         setMinDateTime();
 
-        // 🔒 Saat mantığı kontrolü
+        //  Saat mantığı kontrolü
         startInput.addEventListener("change", function () {
             const selected = new Date(this.value);
             const hour = selected.getHours();
 
-            // Genel spor salonu mantığı (09:00 - 23:59)
+            // Genel spor salonu mantığı 
             if (hour < 9 || hour > 23) {
                 alert("Randevu saatleri 09:00 - 23:59 arasındadır.");
                 this.value = "";

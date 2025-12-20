@@ -16,3 +16,4 @@ namespace SPORSALONUYONETIM.Models
         public TimeSpan WorkEnd { get; set; }
     }
 }
+// github test

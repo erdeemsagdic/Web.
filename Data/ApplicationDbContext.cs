@@ -18,7 +18,7 @@ namespace SPORSALONUYONETIM.Data
         {
             base.OnModelCreating(builder);
 
-            // Service -> Trainer ilişkisinde cascade delete'i kapat
+          
             builder.Entity<Service>()
                 .HasOne(s => s.Trainer)
                 .WithMany()

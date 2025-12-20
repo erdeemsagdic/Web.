@@ -72,9 +72,6 @@ namespace SPORSALONUYONETIM.Controllers
             return View();
         }
 
-        // POST: Services/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,DurationMinutes,Price")] Service service)
@@ -88,7 +85,7 @@ namespace SPORSALONUYONETIM.Controllers
             return View(service);
         }
 
-        // GET: Services/Edit/5
+        // GET: Services
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -104,9 +101,7 @@ namespace SPORSALONUYONETIM.Controllers
             return View(service);
         }
 
-        // POST: Services/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Services
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Name,DurationMinutes,Price")] Service service)
@@ -139,7 +134,7 @@ namespace SPORSALONUYONETIM.Controllers
             return View(service);
         }
 
-        // GET: Services/Delete/5
+        // GET: Services
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -157,7 +152,7 @@ namespace SPORSALONUYONETIM.Controllers
             return View(service);
         }
 
-        // POST: Services/Delete/5
+        // POST: Services
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

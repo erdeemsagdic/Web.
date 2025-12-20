@@ -15,7 +15,7 @@ namespace SPORSALONUYONETIM.Controllers
         [HttpPost]
         public IActionResult Recommend(double height, double weight)
         {
-            // Boy metreye çevrilir
+            
             double heightMeter = height / 100;
             double bmi = weight / (heightMeter * heightMeter);
 

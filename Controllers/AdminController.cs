@@ -14,6 +14,16 @@ namespace SPORSALONUYONETIM.Controllers
         {
             _context = context;
         }
+        // TÜM ANTRENÖRLER
+        public async Task<IActionResult> Trainers()
+        {
+            var trainers = await _context.Trainers
+                .OrderBy(t => t.FullName)
+                .ToListAsync();
+
+            return View(trainers);
+        }
+
 
         // ===============================
         // TÜM RANDEVULAR (ADMIN)

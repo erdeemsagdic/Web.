@@ -20,18 +20,14 @@ namespace SPORSALONUYONETIM.Data
 
             await context.Database.MigrateAsync();
 
-            // --------------------
             // ROLES
-            // --------------------
             if (!await roleManager.RoleExistsAsync("Admin"))
                 await roleManager.CreateAsync(new IdentityRole("Admin"));
 
             if (!await roleManager.RoleExistsAsync("User"))
                 await roleManager.CreateAsync(new IdentityRole("User"));
 
-            // --------------------
             // ADMIN USER 
-            // --------------------
             var adminEmail = "b241210378@sakarya.edu.tr";
             var adminPassword = "Sau123!";
 
@@ -59,9 +55,7 @@ namespace SPORSALONUYONETIM.Data
                     await userManager.AddToRoleAsync(adminUser, "Admin");
             }
 
-            // --------------------
             // TRAINERS
-            // --------------------
             if (!context.Trainers.Any())
             {
                 context.Trainers.AddRange(
@@ -98,9 +92,7 @@ namespace SPORSALONUYONETIM.Data
                 await context.SaveChangesAsync();
             }
 
-            // --------------------
             // SERVICES
-            // --------------------
             if (!context.Services.Any())
             {
                 var emre = context.Trainers.First(t => t.FullName == "Emre Baş");

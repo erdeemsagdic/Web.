@@ -25,9 +25,7 @@ namespace SPORSALONUYONETIM.Controllers
             _ruleService = ruleService;
         }
 
-        // ===============================
         // KULLANICININ RANDEVULARI
-        // ===============================
         public async Task<IActionResult> MyAppointments()
         {
             var userId = _userManager.GetUserId(User);
@@ -42,9 +40,7 @@ namespace SPORSALONUYONETIM.Controllers
             return View(list);
         }
 
-        // ===============================
         // RANDEVU ALMA FORMU
-        // ===============================
         [HttpGet]
         public IActionResult Create()
         {
@@ -60,9 +56,7 @@ namespace SPORSALONUYONETIM.Controllers
             return View();
         }
 
-        // ===============================
         // RANDEVU OLUŞTUR
-        // ===============================
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(int serviceId, DateTime startTime)
@@ -112,9 +106,7 @@ namespace SPORSALONUYONETIM.Controllers
             return RedirectToAction(nameof(MyAppointments));
         }
 
-        // ===============================
         // RANDEVU SİLME ONAYI
-        // ===============================
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -131,9 +123,7 @@ namespace SPORSALONUYONETIM.Controllers
             return View(appt);
         }
 
-        // ===============================
         // RANDEVU SİL
-        // ===============================
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
