@@ -1,0 +1,41 @@
+﻿@model List<SPORSALONUYONETIM.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Tüm Randevular (Admin)";
+}
+
+<h2>Tüm Randevular</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Kullanıcı</th>
+            <th>Spor</th>
+            <th>Antrenör</th>
+            <th>Başlangıç</th>
+            <th>Bitiş</th>
+            <th>İşlem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.User?.Email</td>
+                <td>@a.Service?.Name</td>
+                <td>@a.Trainer?.FullName</td>
+                <td>@a.StartTime.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>@a.EndTime.ToString("dd.MM.yyyy HH:mm")</td>
+                <td>
+                    <form asp-action="DeleteAppointment"
+                          method="post"
+                          onsubmit="return confirm('Randevu silinsin mi?');">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@a.Id" />
+                        <button class="btn btn-danger btn-sm">Sil</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

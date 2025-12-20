@@ -1,0 +1,23 @@
+﻿@model List<SPORSALONUYONETIM.Models.ServiceApiViewModel>
+
+<h2>Hizmetler</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Spor</th>
+            <th>Süre (dk)</th>
+            <th>Ücret (₺)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var s in Model)
+        {
+            <tr>
+                <td>@s.Name</td>
+                <td>@s.DurationMinutes</td>
+                <td>@s.Price</td>
+            </tr>
+        }
+    </tbody>
+</table>
