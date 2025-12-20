@@ -1,0 +1,16 @@
+﻿@model SPORSALONUYONETIM.Models.Appointment
+
+<h2>Randevu Sil</h2>
+
+<div class="alert alert-warning">
+    <div><b>Spor:</b> @Model.Trainer.SportType</div>
+    <div><b>Antrenör:</b> @Model.Trainer.FullName</div>
+    <div><b>Başlangıç:</b> @Model.StartTime</div>
+    <div><b>Bitiş:</b> @Model.EndTime</div>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button class="btn btn-danger" type="submit">Evet, Sil</button>
+    <a class="btn btn-secondary" asp-action="MyAppointments">Vazgeç</a>
+</form>

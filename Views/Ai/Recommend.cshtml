@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "AI Spor Önerisi";
+}
+
+<h2>AI Spor Önerisi</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label">Boy (cm)</label>
+        <input type="number"
+               name="height"
+               class="form-control"
+               min="100"
+               max="230"
+               required />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Kilo (kg)</label>
+        <input type="number"
+               name="weight"
+               class="form-control"
+               min="30"
+               max="200"
+               required />
+    </div>
+
+    <button type="submit" class="btn btn-success">
+        AI Spor Öner
+    </button>
+</form>
+
+@if (ViewBag.BMI != null)
+{
+    <hr />
+
+    <div class="alert alert-info mt-3">
+        <h4>Sonuç</h4>
+        <p><strong>BMI:</strong> @ViewBag.BMI</p>
+        <p><strong>Durum:</strong> @ViewBag.Category</p>
+        <p><strong>Önerilen Spor:</strong> @ViewBag.Sport</p>
+        <p><strong>Açıklama:</strong> @ViewBag.Message</p>
+    </div>
+}

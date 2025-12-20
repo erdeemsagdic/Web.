@@ -1,0 +1,46 @@
+﻿@model List<SPORSALONUYONETIM.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Randevularım";
+}
+
+<h2 class="mb-4">Randevularım</h2>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">
+        Henüz randevunuz bulunmamaktadır.
+    </div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Hizmet</th>
+                <th>Antrenör</th>
+                <th>Başlangıç</th>
+                <th>Bitiş</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <td>@a.Service.Name</td>
+                    <td>@a.Trainer.FullName</td>
+                    <td>@a.StartTime.ToString("dd.MM.yyyy HH:mm")</td>
+                    <td>@a.EndTime.ToString("dd.MM.yyyy HH:mm")</td>
+                    <td>
+                        <a asp-action="Delete"
+                           asp-route-id="@a.Id"
+                           class="btn btn-danger btn-sm">
+                            Sil
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

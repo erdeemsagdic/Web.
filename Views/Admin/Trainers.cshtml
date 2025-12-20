@@ -1,0 +1,23 @@
+﻿@model IEnumerable<SPORSALONUYONETIM.Models.Trainer>
+
+<h2>Antrenörler</h2>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Ad Soyad</th>
+            <th>Spor</th>
+            <th>Çalışma Saatleri</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var t in Model)
+        {
+            <tr>
+                <td>@t.FullName</td>
+                <td>@t.SportType</td>
+                <td>@t.WorkStart - @t.WorkEnd</td>
+            </tr>
+        }
+    </tbody>
+</table>

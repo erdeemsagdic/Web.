@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Randevu Al";
+}
+
+<h2>Randevu Al</h2>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <!-- HİZMET -->
+    <div class="mb-3">
+        <label class="form-label">Hizmet</label>
+        <select name="serviceId"
+                id="serviceSelect"
+                class="form-select"
+                required>
+            <option value="">-- Hizmet Seç --</option>
+            @foreach (var s in ViewBag.Services)
+            {
+                <option value="@s.Id">@s.Display</option>
+            }
+        </select>
+    </div>
+
+    <!-- TARİH / SAAT -->
+    <div class="mb-3">
+        <label class="form-label">Başlangıç Tarihi & Saati</label>
+        <input type="datetime-local"
+               name="startTime"
+               id="startTime"
+               class="form-control"
+               required />
+        <small class="text-muted">
+            Geçmiş tarih ve çalışma saati dışı randevu alınamaz.
+        </small>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Randevu Oluştur
+    </button>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="text-danger mt-2">
+            @Html.ValidationSummary()
+        </div>
+    }
+</form>
+
+@section Scripts {
+    <script>
+        const startInput = document.getElementById("startTime");
+
+        // 🔒 Geçmiş tarih engeli
+        function setMinDateTime() {
+            const now = new Date();
+            now.setSeconds(0);
+            now.setMilliseconds(0);
+
+            // datetime-local format
+            const iso = now.toISOString().slice(0, 16);
+            startInput.min = iso;
+        }
+
+        setMinDateTime();
+
+        // 🔒 Saat mantığı kontrolü
+        startInput.addEventListener("change", function () {
+            const selected = new Date(this.value);
+            const hour = selected.getHours();
+
+            // Genel spor salonu mantığı (09:00 - 23:59)
+            if (hour < 9 || hour > 23) {
+                alert("Randevu saatleri 09:00 - 23:59 arasındadır.");
+                this.value = "";
+            }
+        });
+    </script>
+}
